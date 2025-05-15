@@ -1,12 +1,7 @@
 import requests
 import mysql.connector
 
-# Consulta à API do SIDRA
-url = "https://apisidra.ibge.gov.br/values/t/8880/v/7169/C11046/56734/n3/all/p/all?formato=json"
-response = requests.get(url)
-data = response.json()
-
-# Conexão com MySQL
+# Configurações de conexão com o banco
 conn = mysql.connector.connect(
     host="192.168.0.192",
     user="destino",
@@ -15,45 +10,87 @@ conn = mysql.connector.connect(
 )
 cursor = conn.cursor()
 
-# SQL de inserção com IGNORE para não inserir duplicados
-sql = """
-INSERT IGNORE INTO pmc_88802 (
-    valor,
-    indice,
-    uf,
-    mesano_codigo,
-    mesano
-) VALUES (%s, %s, %s, %s, %s)
-"""
+# Lista de consultas SIDRA e tabelas MySQL correspondentes
+consultas = [
+    {
+        "url": "https://apisidra.ibge.gov.br/values/t/8880/v/7169/C11046/56733,56734/n3/all/p/last?formato=json",
+        "tabela": "pmc_8880",
+        "sql": """
+            INSERT IGNORE INTO pmc_8880 (
+                valor, indice, uf, mesano_codigo, mesano
+            ) VALUES (%s, %s, %s, %s, %s)
+        """,
+        "extrair": lambda r: (
+            float(r["V"]) if r.get("V", "").strip().replace('.', '', 1).isdigit() else None,
+            r.get("D2N"), r.get("D3N"), r.get("D4C"), r.get("D4N")
+        )
+    },
+    {
+        "url": "https://apisidra.ibge.gov.br/values/t/8881/v/7169/C11046/56735/n3/all/p/last?formato=json",
+        "tabela": "pmc_8881",
+        "sql": """
+            INSERT IGNORE INTO pmc_8881 (
+                valor, indice, uf, mesano_codigo, mesano
+            ) VALUES (%s, %s, %s, %s, %s)
+        """,
+        "extrair": lambda r: (
+            float(r["V"]) if r.get("V", "").strip().replace('.', '', 1).isdigit() else None,
+            r.get("D2N"), r.get("D3N"), int(r.get("D4C", "")), r.get("D4N")
+        )
+    },
+    {
+        "url": "https://apisidra.ibge.gov.br/values/t/8882/v/7169/C11046/56733/c85/all/n3/all/p/last?formato=json",
+        "tabela": "pmc_8882",
+        "sql": """
+            INSERT IGNORE INTO pmc_8882 (
+                valor, indice, atividades, uf, mesano_codigo, mesano
+            ) VALUES (%s, %s, %s, %s, %s, %s)
+        """,
+        "extrair": lambda r: (
+            float(r["V"]) if r.get("V", "").strip().replace('.', '', 1).isdigit() else None,
+            r.get("D2N"), r.get("D3N"), r.get("D4N"),
+            r.get("D5C"), r.get("D5N")
+        )
+    },
+    {
+        "url": "https://apisidra.ibge.gov.br/values/t/8883/v/7169/C11046/56735/c85/all/n3/all/p/last?formato=json",
+        "tabela": "pmc_8883",
+        "sql": """
+            INSERT IGNORE INTO pmc_8883 (
+                valor, indice, atividades, uf, mesano_codigo, mesano
+            ) VALUES (%s, %s, %s, %s, %s, %s)
+        """,
+        "extrair": lambda r: (
+            float(r["V"]) if r.get("V", "").strip().replace('.', '', 1).isdigit() else None,
+            r.get("D2N"), r.get("D3N"), r.get("D4N"),
+            r.get("D5C"), r.get("D5N")
+        )
+    }
+]
 
-inseridos = 0
-ignorados = 0
-nulos = 0
-
-for record in data[1:]:
-    valor_str = record.get("V", "").strip()
-
+# Processa todas as consultas
+for consulta in consultas:
+    print(f"Consultando {consulta['tabela']}...")
     try:
-        valor = float(valor_str)
-    except ValueError:
-        valor = None
-        nulos += 1
+        resp = requests.get(consulta["url"])
+        data = resp.json()
 
-    valores = (
-        valor,
-        record.get("D2N"),  # indice
-        record.get("D3N"),  # uf
-        record.get("D4C"),  # mesano_codigo
-        record.get("D4N")   # mesano
-    )
+        inseridos, nulos = 0, 0
+        for record in data[1:]:
+            try:
+                valores = consulta["extrair"](record)
+                if valores[0] is None:
+                    nulos += 1
+                cursor.execute(consulta["sql"], valores)
+                inseridos += cursor.rowcount
+            except Exception as e:
+                print(f"Erro ao processar registro: {e}")
+                continue
 
-    cursor.execute(sql, valores)
-    inseridos += cursor.rowcount  # Só conta se realmente inseriu (0 se duplicado)
+        print(f"{consulta['tabela']}: {inseridos} inseridos, {nulos} valores NULL.")
+    except Exception as e:
+        print(f"Erro ao consultar {consulta['url']}: {e}")
 
 conn.commit()
-print(f"{inseridos} registros inseridos.")
-print(f"{nulos} valores estavam indisponíveis e foram salvos como NULL.")
-print(f"{len(data)-1 - inseridos} registros ignorados por serem duplicados.")
-
 cursor.close()
 conn.close()
