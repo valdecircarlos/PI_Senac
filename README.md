@@ -6,7 +6,7 @@ Ferramenta de visualização de dados utilizada para a criação de dashboards i
 
 - **Instalação:**  
   Baixe e instale o Power BI Desktop a partir do site oficial ou da Microsoft Store.  
-  [Download Power BI Desktop](https://powerbi.microsoft.com/desktop)
+  [[Download Power BI Desktop](https://powerbi.microsoft.com/desktop](https://www.microsoft.com/pt-br/download/details.aspx?id=58494)
 
 - **Principais funcionalidades utilizadas:**  
   - Conexão com fontes de dados MySQL
