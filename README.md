@@ -39,8 +39,7 @@ Linguagem de programação utilizada para a automação dos processos de **extra
   - `requests` para consumo de APIs  
   - `mysql-connector-python` para integração com MySQL  
 
-	``` Executar o "Script DML carregar base sidra_mysql.py" no Prompt de comando
-	```
+	- Executar o "Script DML carregar base sidra_mysql.py" no Prompt de comando
 
 ---
 
@@ -55,8 +54,7 @@ Sistema de gerenciamento de banco de dados relacional (SGBDR), utilizado como re
 
 - **Configuração básica:**
   - Criação de banco de dados:
-    ``` Executar o Script "DDL base de dados sidra.sql" no MySQL
-    ```
+    - Executar o Script "DDL base de dados sidra.sql" no MySQL
 
 ---
 
