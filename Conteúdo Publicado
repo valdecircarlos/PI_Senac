@@ -3,3 +3,4 @@ Script DDL Base de Dados MySQL da tabela 8880 usando apenas os campos Indice, UF
 Script DML em Python para consultar a tabela 8880 do SIDRA por API, dando insert na base MySQL do resultado da consulta sem duplicar os dados.
 Print com a comandos de criação e consulta do MySQL.
 Print de um gráfico no Power BI como resultado da consulta direto na base MySQL.
+README.md de exemplo com base nos processos e recursos utilizados.
