@@ -93,7 +93,7 @@ A extração dos dados foi feita de forma automatizada via **API do SIDRA**, uti
 - Indicadores de receita nominal e volume de vendas;
 - Segmentação por atividades do comércio varejista e ampliado.
 
-Mais informações sobre como utilizar a API do SIDRA estão disponíveis na [documentação oficial](https://servicodados.ibge.gov.br/api/docs/sidra).
+Mais informações sobre como utilizar a API do SIDRA estão disponíveis na [[documentação oficial](https://servicodados.ibge.gov.br/api/docs/sidra)](https://apisidra.ibge.gov.br/home/ajuda).
 
 ---
 
