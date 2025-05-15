@@ -10,7 +10,7 @@ Ferramenta de visualização de dados utilizada para a criação de dashboards i
 
 - **Principais funcionalidades utilizadas:**  
   - Conexão com fontes de dados MySQL
-   Usando o conector "mysql-connector-net-9.3.0.msi" [Download] (https://dev.mysql.com/downloads/connector/net/)
+     *Usando o conector "mysql-connector-net-9.3.0.msi" [Download] (https://dev.mysql.com/downloads/connector/net/)*
   - Criação de medidas DAX  
   - Filtros interativos e segmentações  
 
