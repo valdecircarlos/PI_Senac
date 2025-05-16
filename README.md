@@ -98,7 +98,7 @@ As seguintes tabelas foram utilizadas como fonte de dados:
 
 A extração dos dados foi feita de forma automatizada via **API do SIDRA**, utilizando parâmetros personalizados para selecionar as séries temporais de interesse, tais como:
 
-- Nível Brasil ou por Unidades da Federação;
+- Nível Territorial por Unidades da Federação;
 - Período de 2000 até 2025 (quando disponível);
 - Indicadores de receita nominal e volume de vendas;
 - Segmentação por atividades do comércio varejista e ampliado.
