@@ -12,7 +12,7 @@ Sistema de gerenciamento de banco de dados relacional (SGBDR), utilizado como re
   - [MySQL Workbench](https://www.mysql.com/products/workbench/)
 
 - **Criação da Base de Dados do MySQL para receber os dados do SIDRA:**
-  - Baixar o arquivo "Script DDL base de dados sidra.sql" do repositório (https://github.com/valdecircarlos/PI_Senac/blob/main/Script%20DML%20carregar%20base%20sidra_mysql.py)
+  - Baixar o arquivo "Script DDL base de dados sidra.sql" do repositório (https://github.com/valdecircarlos/PI_Senac/blob/main/Script%20DDL%20base%20de%20dados%20sidra.sql)
   - Abra o MySQL Workbench
   - Carregue o arquivo de script em File -- Run SQL Script.
 
