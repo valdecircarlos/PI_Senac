@@ -38,9 +38,18 @@ Linguagem de programação utilizada para a automação dos processos de **extra
 - **Principais bibliotecas utilizadas:**  
   
   - `requests` para consumo de APIs  
-  - `mysql-connector-python` para integração com MySQL  
+  - `mysql-connector-python` para integração com MySQL
+- **Instalação:**
+  - Abra o Prompt de Comando do Windows
+  - python --version  (para ver a versão do python)
+  - python install pandas requests mysql-connector-python
+  - python -c "import pandas, requests, mysql.connector; print('Tudo instalado corretamente!')"
 
-	- Executar o "Script DML carregar base sidra_mysql.py" no Prompt de comando
+- **Consulta Base SIDRA e Gravar os Dados na Base MySQL**
+  - Baixar o arquivo "Script DML carregar base sidra_mysql.py" do repositório 
+  - Abra o Prompt de Comando do Windows
+  - Acesse o Diretório onde o arquivo de Script "Script DML carregar base sidra_mysql.py" foi salvo.
+  - Executar o "Script DML carregar base sidra_mysql.py" no Prompt de comando
 
 ---
 
