@@ -1,6 +1,23 @@
 
 ## 🛠️ Detalhamento Técnico de Tecnologias
 
+
+### 🗄️ [MySQL](https://www.mysql.com/)
+Sistema de gerenciamento de banco de dados relacional (SGBDR), utilizado como repositório principal dos dados tratados. Permite o armazenamento estruturado e eficiente, além de consultas SQL integradas com outras ferramentas.
+
+- **Instalação:**  
+  Baixe o MySQL Server a partir do [MySQL Installer](https://dev.mysql.com/downloads/installer/).
+
+- **Ferramenta recomendada para gerenciamento:**  
+  - [MySQL Workbench](https://www.mysql.com/products/workbench/)
+
+- **Criação da Base de Dados do MySQL para receber os dados do SIDRA:**
+  - Baixar o arquivo "Script DDL base de dados sidra.sql" do repositório (https://github.com/valdecircarlos/PI_Senac/blob/main/Script%20DML%20carregar%20base%20sidra_mysql.py)
+  - Abra o MySQL Workbench
+  - Carregue o arquivo de script em File -- Run SQL Script.
+
+---
+
 ### 📊 [Power BI](https://powerbi.microsoft.com/)
 Ferramenta de visualização de dados utilizada para a criação de dashboards interativos e relatórios dinâmicos. Foi empregada para apresentar visualmente os dados tratados, permitindo uma análise intuitiva e interativa por parte dos usuários finais.
 
@@ -46,25 +63,10 @@ Linguagem de programação utilizada para a automação dos processos de **extra
   - python -c "import pandas, requests, mysql.connector; print('Tudo instalado corretamente!')"
 
 - **Consulta Base SIDRA e Gravar os Dados na Base MySQL**
-  - Baixar o arquivo "Script DML carregar base sidra_mysql.py" do repositório 
+  - Baixar o arquivo "Script DML carregar base sidra_mysql.py" do repositório (https://github.com/valdecircarlos/PI_Senac/blob/main/Script%20DML%20carregar%20base%20sidra_mysql.py)
   - Abra o Prompt de Comando do Windows
   - Acesse o Diretório onde o arquivo de Script "Script DML carregar base sidra_mysql.py" foi salvo.
   - Executar o "Script DML carregar base sidra_mysql.py" no Prompt de comando
-
----
-
-### 🗄️ [MySQL](https://www.mysql.com/)
-Sistema de gerenciamento de banco de dados relacional (SGBDR), utilizado como repositório principal dos dados tratados. Permite o armazenamento estruturado e eficiente, além de consultas SQL integradas com outras ferramentas.
-
-- **Instalação:**  
-  Baixe o MySQL Server a partir do [MySQL Installer](https://dev.mysql.com/downloads/installer/).
-
-- **Ferramenta recomendada para gerenciamento:**  
-  - [MySQL Workbench](https://www.mysql.com/products/workbench/)
-
-- **Configuração básica:**
-  - Criação de banco de dados:
-    - Executar o Script "DDL base de dados sidra.sql" no MySQL
 
 ---
 
