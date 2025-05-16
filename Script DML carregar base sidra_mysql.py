@@ -53,7 +53,7 @@ consultas = [
         )
     },
     {
-        "url": "https://apisidra.ibge.gov.br/values/t/8883/v/7169/C11046/56735/c85/all/n3/all/p/all?formato=json",
+        "url": "https://apisidra.ibge.gov.br/values/t/8883/v/7169/C11046/56735/c85/all/n1/all/p/all?formato=json",
         "tabela": "pmc_8883",
         "sql": """
             INSERT IGNORE INTO pmc_8883 (
