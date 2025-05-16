@@ -56,7 +56,7 @@ Linguagem de programação utilizada para a automação dos processos de **extra
   
   - `requests` para consumo de APIs  
   - `mysql-connector-python` para integração com MySQL
-- **Instalação:**
+- **Instalação das Bibliotecas no Windows:**
   - Abra o Prompt de Comando do Windows
   - python --version  (para ver a versão do python)
   - python install pandas requests mysql-connector-python
